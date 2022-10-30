@@ -1,7 +1,5 @@
 import json
-
 import click
-import pandas as pd
 
 from src.data import read_data, split_train_val_data
 from src.features import extract_target, build_transformer

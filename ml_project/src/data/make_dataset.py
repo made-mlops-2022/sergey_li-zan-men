@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from ..enities import SplittingParams
+from src.enities import SplittingParams
 
 
 def read_data(path_to_data: str) -> pd.DataFrame:
