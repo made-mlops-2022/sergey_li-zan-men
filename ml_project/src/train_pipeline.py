@@ -1,6 +1,6 @@
 import json
 import click
-from typing import Tuple
+from typing import Tuple, Dict
 
 import logging.config
 from src.settings import get_logging_conf
@@ -14,7 +14,7 @@ logging.config.dictConfig(get_logging_conf())
 logger = logging.getLogger(__name__)
 
 
-def train_pipeline(train_pipeline_params: TrainingPipelineParams) -> Tuple[str, dict[str, float]]:
+def train_pipeline(train_pipeline_params: TrainingPipelineParams) -> Tuple[str, Dict[str, float]]:
 
     logger.info(f"start train pipeline with params {train_pipeline_params}")
     data = read_data(train_pipeline_params.path_to_data)
