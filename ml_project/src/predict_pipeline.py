@@ -13,11 +13,8 @@ logging.config.dictConfig(get_logging_conf())
 logger = logging.getLogger(__name__)
 
 
-def predict_pipeline(
-        predict_pipeline_params: PredictPipelineParams
-) -> str:
-    logger.info(f"start predict pipeline with params "
-                f"{predict_pipeline_params}")
+def predict_pipeline(predict_pipeline_params: PredictPipelineParams) -> str:
+    logger.info(f"start predict pipeline with params {predict_pipeline_params}")
     data = read_data(predict_pipeline_params.path_to_data)
     logger.info(f"data.shape is {data.shape}")
 
@@ -28,8 +25,7 @@ def predict_pipeline(
     model = load_model(predict_pipeline_params.path_to_model)
 
     predicts = predict_model(features, model)
-    pd.Series(predicts) \
-        .to_csv(predict_pipeline_params.path_to_output, index=False)
+    pd.Series(predicts).to_csv(predict_pipeline_params.path_to_output, index=False)
     logger.info(f"predict saved by {predict_pipeline_params.path_to_output}")
 
     return predict_pipeline_params.path_to_output

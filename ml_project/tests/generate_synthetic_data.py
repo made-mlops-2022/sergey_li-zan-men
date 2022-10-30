@@ -3,9 +3,7 @@ import os
 from numpy.random import randint, choice, uniform, seed
 
 
-def get_synthetic_data(
-        n_rows: int, seed_val: int, need_target: bool = True
-) -> pd.DataFrame:
+def get_synthetic_data(n_rows: int, seed_val: int, need_target: bool = True) -> pd.DataFrame:
     seed(seed_val)
     data = {
         'age': randint(29, 78, size=n_rows),
@@ -21,11 +19,9 @@ def get_synthetic_data(
         'slope': choice(3, size=n_rows),
         'ca': choice(4, size=n_rows),
         'thal': choice(3, size=n_rows),
-        
     }
     if need_target:
         data['condition'] = choice(2, size=n_rows)
-        
     df = pd.DataFrame(data)
     return df
 

@@ -53,15 +53,9 @@ def test_train_pipeline():
 
 
 def test_predict_pipeline():
-    path_to_data = os.path.join(
-        'tests', 'test_data', 'test_predict.csv'
-    )
-    path_to_output = os.path.join(
-        'tests', 'test_results', 'test_res_predict.csv'
-    )
-    path_to_model = os.path.join(
-        'tests', 'test_results', 'test_model.pkl'
-    )
+    path_to_data = os.path.join('tests', 'test_data', 'test_predict.csv')
+    path_to_output = os.path.join('tests', 'test_results', 'test_res_predict.csv')
+    path_to_model = os.path.join('tests', 'test_results', 'test_model.pkl')
 
     feature_params = FeatureParams(cat_cols, num_cols, use_scaler=True)
 
