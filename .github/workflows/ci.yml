@@ -34,4 +34,4 @@ jobs:
       - name: Run tests
         run: |
           cd ml_project
-          pytest tests
+          pytest
