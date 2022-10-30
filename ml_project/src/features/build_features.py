@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from typing import Tuple
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
@@ -9,7 +10,7 @@ from src.enities import FeatureParams
 
 def extract_target(
         df: pd.DataFrame, feature_params: FeatureParams
-) -> tuple[pd.DataFrame, pd.Series]:
+) -> Tuple[pd.DataFrame, pd.Series]:
     target = df[feature_params.target_col]
     df_without_target = df.drop(feature_params.target_col, axis=1)
     return df_without_target, target

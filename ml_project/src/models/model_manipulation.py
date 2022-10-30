@@ -8,7 +8,7 @@ from sklearn.metrics import (
     accuracy_score, f1_score, precision_score, recall_score
 )
 
-from ..enities import TrainingParams
+from src.enities import TrainingParams
 
 ClassifierModel = RandomForestClassifier | LogisticRegressionCV
 
