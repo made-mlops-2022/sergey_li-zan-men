@@ -9,7 +9,7 @@ from dataprep.eda import create_report
               type=click.Path(exists=True))
 @click.option('--path_to_save',
               default='report/eda.html',
-              type=click.Path(exists=False))
+              type=click.Path())
 def generate_eda_report(path_to_data, path_to_save):
     df = pd.read_csv(path_to_data)
     report = create_report(df)
