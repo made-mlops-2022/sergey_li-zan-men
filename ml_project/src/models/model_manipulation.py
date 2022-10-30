@@ -1,3 +1,5 @@
+from typing import Union
+
 import numpy as np
 import pandas as pd
 import pickle
@@ -10,7 +12,7 @@ from sklearn.metrics import (
 
 from src.enities import TrainingParams
 
-ClassifierModel = RandomForestClassifier | LogisticRegressionCV
+ClassifierModel = Union[RandomForestClassifier, LogisticRegressionCV]
 
 
 def train_model(
