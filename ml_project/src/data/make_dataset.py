@@ -1,4 +1,5 @@
 import pandas as pd
+from typing import Tuple
 from sklearn.model_selection import train_test_split
 
 from src.enities import SplittingParams
@@ -11,7 +12,7 @@ def read_data(path_to_data: str) -> pd.DataFrame:
 
 def split_train_val_data(
         data: pd.DataFrame, split_params: SplittingParams
-) -> tuple[pd.DataFrame, pd.DataFrame]:
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
     train_df, val_df = train_test_split(
         data,
         test_size=split_params.val_size,
