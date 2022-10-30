@@ -17,8 +17,14 @@ def extract_target(
 
 def __build_categorical_pipeline(feature_params: FeatureParams) -> Pipeline:
     cat_pipeline = Pipeline([
-        ("impute", SimpleImputer(missing_values=np.nan, strategy="most_frequent")),
-        ('ohe', OneHotEncoder(drop='first'))
+        (
+            "impute",
+            SimpleImputer(missing_values=np.nan, strategy="most_frequent")
+        ),
+        (
+            'ohe',
+            OneHotEncoder(drop='first')
+        )
     ])
     return cat_pipeline
 

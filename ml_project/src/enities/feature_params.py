@@ -6,6 +6,5 @@ from typing import Optional
 class FeatureParams:
     categorical_features: list[str]
     numerical_features: list[str]
-    features_to_drop: list[str]
-    target_col: Optional[str]
+    target_col: Optional[str] = field(default=None)
     use_scaler: bool = field(default=False)

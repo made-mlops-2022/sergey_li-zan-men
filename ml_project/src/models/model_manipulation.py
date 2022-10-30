@@ -42,7 +42,9 @@ def predict_model(
     return model.predict(features)
 
 
-def evaluate_model(predicts: np.ndarray, target: pd.Series) -> dict[str, float]:
+def evaluate_model(
+        predicts: np.ndarray, target: pd.Series
+) -> dict[str, float]:
     metrics = dict()
     metrics['accuracy_score'] = accuracy_score(target, predicts)
     metrics['precision_score'] = precision_score(target, predicts)

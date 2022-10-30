@@ -1,5 +1,5 @@
 path_to_data: 'data/for_prediction/test.csv'
-path_to_output: 'models/predictions/predict_test.csv'
+path_to_output: 'models/predictions/predict.csv'
 path_to_model: 'models/model.pkl'
 
 feature_params:
@@ -18,7 +18,5 @@ feature_params:
     - 'chol'
     - 'thalach'
     - 'oldpeak'
-  features_to_drop:
-    - ''
   use_scaler: True
 
