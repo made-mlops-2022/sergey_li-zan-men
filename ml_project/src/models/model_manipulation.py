@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Dict
 
 import numpy as np
 import pandas as pd
@@ -37,16 +37,11 @@ def train_model(
     return model
 
 
-def predict_model(
-        features: pd.DataFrame,
-        model: ClassifierModel,
-) -> np.ndarray:
+def predict_model(features: pd.DataFrame, model: ClassifierModel) -> np.ndarray:
     return model.predict(features)
 
 
-def evaluate_model(
-        predicts: np.ndarray, target: pd.Series
-) -> dict[str, float]:
+def evaluate_model(predicts: np.ndarray, target: pd.Series) -> Dict[str, float]:
     metrics = dict()
     metrics['accuracy_score'] = accuracy_score(target, predicts)
     metrics['precision_score'] = precision_score(target, predicts)
