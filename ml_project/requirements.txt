@@ -4,3 +4,4 @@ dataprep==0.4.5
 sklearn==0.0
 marshmallow-dataclass==8.5.9
 pytest==7.2.0
+mlflow
