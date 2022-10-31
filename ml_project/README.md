@@ -14,6 +14,10 @@ pip install -r requirements.txt
 ```
 python src/generate_eda_report.py
 ```
+OR
+```
+python src/generate_eda_report.py --path_to_data='data/raw/heart_cleveland_upload.csv' --path_to_save='report/eda.html'
+```
 3. Run first way training model (Logistic Regression with scaling):
 ```
 python src/train_pipeline.py
