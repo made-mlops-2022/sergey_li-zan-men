@@ -1,5 +1,6 @@
 import json
 import click
+import mlflow
 from typing import Tuple, Dict
 
 import logging.config
@@ -15,7 +16,6 @@ logger = logging.getLogger(__name__)
 
 
 def train_pipeline(train_pipeline_params: TrainingPipelineParams) -> Tuple[str, Dict[str, float]]:
-
     logger.info(f"start train pipeline with params {train_pipeline_params}")
     data = read_data(train_pipeline_params.path_to_data)
     logger.info(f"data.shape is {data.shape}")
@@ -43,6 +43,12 @@ def train_pipeline(train_pipeline_params: TrainingPipelineParams) -> Tuple[str, 
     with open(train_pipeline_params.path_to_metrics, "w") as f:
         json.dump(metrics, f)
         logger.info(f"metrics saved by {train_pipeline_params.path_to_metrics}")
+
+    with mlflow.start_run(run_name=f'training model {train_pipeline_params.train_params.model_type}'):
+        mlflow.sklearn.log_model(model, train_pipeline_params.train_params.model_type)
+        for metric, score in metrics.items():
+            mlflow.log_metric(metric, score)
+        logger.info("metrics tracking by mlflow")
 
     path_to_model = dump_model(model, train_pipeline_params.path_to_output)
     logger.info(f"model saved by {train_pipeline_params.path_to_output}")
