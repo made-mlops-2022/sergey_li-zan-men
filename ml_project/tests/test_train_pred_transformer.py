@@ -1,7 +1,7 @@
 import os
 
+import numpy as np
 import pandas as pd
-
 from generate_synthetic_data import generate_synthetic_data
 from src.enities import (
     TrainingPipelineParams,
@@ -12,6 +12,7 @@ from src.enities import (
 )
 from src.train_pipeline import train_pipeline
 from src.predict_pipeline import predict_pipeline
+from src.features import build_transformer
 
 cat_cols = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal']
 num_cols = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak']
@@ -73,3 +74,17 @@ def test_predict_pipeline():
 
     predicts = pd.read_csv(res_path).iloc[0]
     assert 0 <= predicts.sum() <= predicts.shape[0], 'predicts is not a good value'
+
+
+def test_transformer():
+    feature_params = FeatureParams(['ca'], ['age'], use_scaler=True)
+    transformer = build_transformer(feature_params)
+
+    df = pd.DataFrame({'ca': [0, 1, 2, 3], 'age': [30, 65, 42, 58]})
+    res_df = transformer.fit_transform(df)
+
+    assert res_df.shape == (4, 4)
+    assert all(np.isclose(res_df[:, 0], (df.age - df.age.mean()) / df.age.std(ddof=0)))
+    assert all(res_df[:, 1] == [0, 1, 0, 0])
+    assert all(res_df[:, 2] == [0, 0, 1, 0])
+    assert all(res_df[:, 3] == [0, 0, 0, 1])
