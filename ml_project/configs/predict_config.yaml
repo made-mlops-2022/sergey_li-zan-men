@@ -1,0 +1,22 @@
+path_to_data: 'data/for_prediction/test.csv'
+path_to_output: 'models/predictions/predict.csv'
+path_to_model: 'models/model.pkl'
+
+feature_params:
+  categorical_features:
+    - 'sex'
+    - 'cp'
+    - 'fbs'
+    - 'restecg'
+    - 'exang'
+    - 'slope'
+    - 'ca'
+    - 'thal'
+  numerical_features:
+    - 'age'
+    - 'trestbps'
+    - 'chol'
+    - 'thalach'
+    - 'oldpeak'
+  use_scaler: True
+
