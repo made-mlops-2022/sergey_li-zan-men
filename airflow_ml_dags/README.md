@@ -10,3 +10,8 @@ source start_settings.sh
 ```
 docker-compose up --build
 ```
+3. INFO:
+* Login - admin
+* Password - admin
+* Port airflow - 8080
+* Port mlflow - 4999
